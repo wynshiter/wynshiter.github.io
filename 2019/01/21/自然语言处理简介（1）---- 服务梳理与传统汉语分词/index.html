@@ -96,20 +96,41 @@
 
 
 
-  <meta property="og:type" content="website">
+  <meta name="description" content="同步发表于：本人所属公司博客&amp;lt;知盛数据集团西安研发中心技术博客&amp;gt;https://blog.csdn.net/Insightzen_xian/article/details/81168829 @toc   大家好，今天和大家分享一下，我在自然语言处理（Natural Language Processing，NLP）的一些学习经验和心得体会。主要内容分为两大部分，第一部分对汉语自然处理的服">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/01/21/自然语言处理简介（1）---- 服务梳理与传统汉语分词/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="同步发表于：本人所属公司博客&amp;lt;知盛数据集团西安研发中心技术博客&amp;gt;https://blog.csdn.net/Insightzen_xian/article/details/81168829 @toc   大家好，今天和大家分享一下，我在自然语言处理（Natural Language Processing，NLP）的一些学习经验和心得体会。主要内容分为两大部分，第一部分对汉语自然处理的服">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://img-blog.csdn.net/2018072316045736?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0luc2lnaHR6ZW5feGlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180723160510235?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0luc2lnaHR6ZW5feGlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180724110940533?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0luc2lnaHR6ZW5feGlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180724111044827?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0luc2lnaHR6ZW5feGlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180724112541674?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0luc2lnaHR6ZW5feGlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180724112553862?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0luc2lnaHR6ZW5feGlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180725095432843?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0luc2lnaHR6ZW5feGlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180724112612322?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0luc2lnaHR6ZW5feGlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180724112624527?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0luc2lnaHR6ZW5feGlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180724150443861?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0luc2lnaHR6ZW5feGlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181209154652370.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dhbmd5YW5pbmdsbQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180724154959619?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0luc2lnaHR6ZW5feGlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180724173740545?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0luc2lnaHR6ZW5feGlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180725162207173?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0luc2lnaHR6ZW5feGlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180726141000773?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0luc2lnaHR6ZW5feGlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="https://img-blog.csdn.net/20180726142301954?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0luc2lnaHR6ZW5feGlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:updated_time" content="2019-01-21T15:41:01.155Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="同步发表于：本人所属公司博客&amp;lt;知盛数据集团西安研发中心技术博客&amp;gt;https://blog.csdn.net/Insightzen_xian/article/details/81168829 @toc   大家好，今天和大家分享一下，我在自然语言处理（Natural Language Processing，NLP）的一些学习经验和心得体会。主要内容分为两大部分，第一部分对汉语自然处理的服">
+<meta name="twitter:image" content="https://img-blog.csdn.net/2018072316045736?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0luc2lnaHR6ZW5feGlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/01/21/自然语言处理简介（1）---- 服务梳理与传统汉语分词/">
 
 
 
@@ -119,7 +140,7 @@
   };
 </script>
 
-  <title>Hexo</title>
+  <title> | Hexo</title>
   
 
 
@@ -167,8 +188,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -206,7 +226,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
 
     
     
@@ -268,9 +288,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -303,9 +323,7 @@
         
         
           <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/21/自然语言处理简介（1）---- 服务梳理与传统汉语分词/" class="post-title-link" itemprop="url">Untitled</a>
+
               
             
           </h1>
@@ -369,9 +387,7 @@
       
 
       
-        
-          
-            <p>同步发表于：本人所属公司博客&lt;知盛数据集团西安研发中心技术博客&gt;<br><a href="https://blog.csdn.net/Insightzen_xian/article/details/81168829" target="_blank" rel="noopener">https://blog.csdn.net/Insightzen_xian/article/details/81168829</a></p>
+        <p>同步发表于：本人所属公司博客&lt;知盛数据集团西安研发中心技术博客&gt;<br><a href="https://blog.csdn.net/Insightzen_xian/article/details/81168829" target="_blank" rel="noopener">https://blog.csdn.net/Insightzen_xian/article/details/81168829</a></p>
 <p>@<a href="文章大纲">toc</a></p>
 <hr>
 <p><img src="https://img-blog.csdn.net/2018072316045736?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0luc2lnaHR6ZW5feGlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
@@ -669,8 +685,6 @@
 <p>jieba分词简介与解析<br><a href="https://www.cnblogs.com/baiboy/p/jieba2.html" target="_blank" rel="noopener">https://www.cnblogs.com/baiboy/p/jieba2.html</a></p>
 <p>有哪些好的汉语分词方案<br><a href="https://www.zhihu.com/question/19578687" target="_blank" rel="noopener">https://www.zhihu.com/question/19578687</a><br>基于分布式的短文本命题实体识别之—-人名识别（python实现）<br><a href="https://blog.csdn.net/wangyaninglm/article/details/75042151" target="_blank" rel="noopener">https://blog.csdn.net/wangyaninglm/article/details/75042151</a></p>
 
-          
-        
       
     </div>
 
@@ -693,159 +707,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/21/hello-world/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/21/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-              
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
+              <a href="/2019/01/21/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
             
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-21 11:36:31" itemprop="dateCreated datePublished" datetime="2019-01-21T11:36:31+08:00">2019-01-21</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -855,14 +738,15 @@
   </article>
 
 
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -883,8 +767,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -928,6 +821,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Nlp技术体系简介"><span class="nav-number">1.</span> <span class="nav-text">1.Nlp技术体系简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-基础技术"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 基础技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Nlp-核心技术"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Nlp 核心技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-NlP-（高端技术）"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 NlP+（高端技术）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-知名NLP-服务系统简介"><span class="nav-number">2.</span> <span class="nav-text">2.知名NLP 服务系统简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1汉语分词系统ICTCLAS"><span class="nav-number">2.1.</span> <span class="nav-text">2.1汉语分词系统ICTCLAS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-哈工大语言云（Language-Technology-Platform，LTP）"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 哈工大语言云（Language Technology Platform，LTP）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Amazon-Comprehend"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Amazon Comprehend</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-阿里云NLP"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 阿里云NLP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-腾讯云NLP"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 腾讯云NLP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-百度语言处理基础技术"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 百度语言处理基础技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-1-功能丰富且技术领先"><span class="nav-number">2.6.1.</span> <span class="nav-text">2.6.1 功能丰富且技术领先</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-2-DNN语言模型"><span class="nav-number">2.6.2.</span> <span class="nav-text">2.6.2 DNN语言模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-3-调用方式简单"><span class="nav-number">2.6.3.</span> <span class="nav-text">2.6.3 调用方式简单</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-准确率（离线模型靠不住，在线模型可更新）"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 准确率（离线模型靠不住，在线模型可更新）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-其他知名提供商"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 其他知名提供商</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-NLP开源组件简介"><span class="nav-number">3.</span> <span class="nav-text">3. NLP开源组件简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-NLTK"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 NLTK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-Jieba分词"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 Jieba分词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-ICTCLAS"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 ICTCLAS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-Gensim"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 Gensim</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-汉语语言学"><span class="nav-number">4.</span> <span class="nav-text">4. 汉语语言学</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-汉字的统一"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 汉字的统一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-印欧语系与汉藏语系"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 印欧语系与汉藏语系</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-词汇与分词技术简介"><span class="nav-number">5.</span> <span class="nav-text">5. 词汇与分词技术简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-汉语词汇"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 汉语词汇</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-汉语分词技术"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 汉语分词技术</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-汉语分词技术—-以jieba-分词为例"><span class="nav-number">6.</span> <span class="nav-text">6.汉语分词技术—-以jieba 分词为例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-Jieba分词的特点"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 Jieba分词的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-分词算法"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 分词算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-3-未登录词识别与词性标注"><span class="nav-number">6.3.</span> <span class="nav-text">6.3 未登录词识别与词性标注</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-1-未登录词识别"><span class="nav-number">6.3.1.</span> <span class="nav-text">6.3.1 未登录词识别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-2-词性标注"><span class="nav-number">6.3.2.</span> <span class="nav-text">6.3.2 词性标注</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">7.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -1057,6 +967,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
 
   
 
@@ -1067,6 +981,8 @@
 
   
 
+
+  
 
 
   
