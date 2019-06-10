@@ -1921,6 +1921,9 @@ pre .javascript .function {
   border: 1px solid #eee;
   opacity: 1;
 }
+.site-author-image {
+  border-radius: 100%;
+}
 .site-author-name {
   margin: 0;
   text-align: center;
@@ -2003,7 +2006,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #8e03ff;
+  background: #ffbeff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2812,14 +2815,14 @@ ul.breadcrumb li+li:last-child {
   top: 0;
   overflow: hidden;
   padding: 0;
-  width: 240px;
+  width: 300px;
   background: #fff;
   box-shadow: initial;
   border-radius: initial;
 }
 @media (min-width: 1200px) {
   .container .header-inner {
-    width: 240px;
+    width: 300px;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
@@ -2858,7 +2861,7 @@ ul.breadcrumb li+li:last-child {
   float: right;
   box-sizing: border-box;
   padding: 40px;
-  width: calc(100% - 252px);
+  width: calc(100% - 312px);
   background: #fff;
   min-height: 700px;
   box-shadow: initial;
@@ -2883,7 +2886,7 @@ ul.breadcrumb li+li:last-child {
   position: static;
   float: left;
   margin-left: -100%;
-  width: 240px;
+  width: 300px;
   background: #f5f7f9;
   box-shadow: none;
 }
@@ -3106,7 +3109,7 @@ ul.breadcrumb li+li:last-child {
 }
 .sidebar-inner {
   box-sizing: border-box;
-  width: 240px;
+  width: 300px;
   color: #555;
   background: #fff;
   box-shadow: initial;
