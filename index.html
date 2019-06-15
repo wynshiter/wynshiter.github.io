@@ -492,7 +492,7 @@
                 </span>
             
                 <a href="/2019/01/21/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/21/hello-world/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/01/21/hello-world/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -673,7 +673,7 @@ More info
                 </span>
             
                 <a href="/2018/11/11/自然语言处理简介（1）---- 服务梳理与传统汉语分词/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/11/自然语言处理简介（1）---- 服务梳理与传统汉语分词/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/11/11/自然语言处理简介（1）---- 服务梳理与传统汉语分词/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1051,9 +1051,32 @@ More info
 
   
   
-  <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
 
 
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: true,
+    appId: '7akva4VY76lYwPKWD9B9QAJj-gzGzoHsz',
+    appKey: 'n9gn8n3IOfDmr6IRVR5HNw1I',
+    placeholder: '留言区',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+</script>
 
 
 
